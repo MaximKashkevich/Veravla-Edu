@@ -1,0 +1,72 @@
+@mixin fluid-text($min-value, $max-value, $min-vw: 320, $max-vw: 1400) {
+  & {
+    font-size: clamp(
+      #{$min-value}px,
+      calc(
+        #{$min-value}px + (#{$max-value} - #{$min-value}) *
+          ((100vw - #{$min-vw}px) / (#{$max-vw} - #{$min-vw}))
+      ),
+      #{$max-value}px
+    );
+  }
+}
+
+@mixin reset-link {
+  color: inherit;
+
+  &,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin reser-button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+@mixin flex-center($IsInline: false) {
+  @if $IsInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@mixin square($size) {
+  width: $size;
+  aspect-ratio: 1;
+}
+
+@mixin gradient-text(
+  $angle: 89.83deg,
+  $color1: #2563eb,
+  $color2: #d946ef,
+  $stop1: 0.11%,
+  $stop2: 58.65%
+) {
+  background: linear-gradient($angle, $color1 $stop1, $color2 $stop2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  @supports not (background-clip: text) {
+    color: $color1;
+  }
+}

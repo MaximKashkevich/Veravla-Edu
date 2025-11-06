@@ -1,0 +1,15 @@
+// Базовые стили и утилиты
+@import "_fonts.scss";
+@import "_variables.scss";
+@import "_mixins.scss";
+@import "_media.scss";
+@import "_normalize.scss";
+@import "_globals.scss";
+@import "_utils.scss";
+
+@import "blocks/block-one.scss";
+@import "blocks/header.scss";
+@import "blocks/button.scss";
+@import "blocks/hero.scss";
+@import "blocks/block-two.scss";
+@import "blocks/advantages.scss";

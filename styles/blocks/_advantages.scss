@@ -1,0 +1,33 @@
+.advantages {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 50px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 224, 255, 0.11) 0%,
+      rgba(0, 224, 255, 0.0539) 100%
+    );
+    border-radius: 20px;
+    border: 2px solid;
+
+    border-image-source: radial-gradient(
+      47.54% 111.62% at 50% 50%,
+      #49b9e8 0%,
+      rgba(31, 77, 96, 0.43) 100%
+    );
+    padding: 30px;
+  }
+}

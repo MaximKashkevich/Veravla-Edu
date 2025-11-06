@@ -1,0 +1,265 @@
+.header {
+  @include flex-between;
+  padding-top: 40px;
+  opacity: 0;
+  animation: elegantReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s
+    forwards;
+
+  &__logo {
+    opacity: 0;
+    animation: smoothSlideLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s
+      forwards;
+
+    img {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+
+      &:hover {
+        transform: scale(1.05) rotate(1deg);
+        filter: drop-shadow(0 4px 12px rgba(73, 185, 232, 0.3));
+      }
+    }
+  }
+
+  &__phone {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    opacity: 0;
+    animation: smoothSlideRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s
+      forwards;
+    padding: 8px 16px;
+    border-radius: 25px;
+    background: linear-gradient(
+      135deg,
+      rgba(73, 185, 232, 0.1) 0%,
+      transparent 50%
+    );
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    span {
+      color: var(--color-light);
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(73, 185, 232, 0.15) 0%,
+        rgba(73, 185, 232, 0.05) 100%
+      );
+      transform: translateY(-2px);
+
+      span {
+        color: var(--color-blue);
+        text-shadow: 0 0 15px rgba(73, 185, 232, 0.4);
+      }
+
+      img {
+        animation: gentlePulse 1s ease-in-out;
+        filter: brightness(1.2) drop-shadow(0 0 8px rgba(73, 185, 232, 0.6));
+      }
+    }
+  }
+
+  @include tablet {
+    padding-top: 30px;
+
+    &__logo img {
+      width: 240px;
+      height: auto;
+    }
+  }
+
+  @include mobile {
+    padding-top: 20px;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+
+    &__logo img {
+      width: 200px;
+    }
+
+    &__phone {
+      justify-content: center;
+      padding: 6px 12px;
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// Премиальные анимации
+@keyframes elegantReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    filter: blur(10px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes smoothSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px) skewX(5deg);
+  }
+  70% {
+    transform: translateX(5px) skewX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes smoothSlideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(80px) skewX(-5deg);
+  }
+  70% {
+    transform: translateX(-5px) skewX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes magneticAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-2deg);
+    letter-spacing: -0.05em;
+  }
+  50% {
+    transform: scale(1.02) rotate(1deg);
+    letter-spacing: 0.02em;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+    letter-spacing: normal;
+  }
+}
+
+@keyframes premiumGradientReveal {
+  0% {
+    opacity: 0;
+    background-position: -100% 0;
+    transform: perspective(1000px) rotateX(10deg);
+  }
+  60% {
+    opacity: 0.8;
+    background-position: 100% 0;
+  }
+  100% {
+    opacity: 1;
+    background-position: 0 0;
+    transform: perspective(1000px) rotateX(0);
+  }
+}
+
+@keyframes sophisticatedShine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes morphReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 60%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes floatSubtle {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  33% {
+    transform: translateY(-3px) rotate(0.5deg);
+  }
+  66% {
+    transform: translateY(2px) rotate(-0.5deg);
+  }
+}
+
+@keyframes textGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 20px transparent;
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(73, 185, 232, 0.3);
+  }
+}
+
+@keyframes gentlePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotateX(90deg);
+    filter: blur(8px);
+  }
+  60% {
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
