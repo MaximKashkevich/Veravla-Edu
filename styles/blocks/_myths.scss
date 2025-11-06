@@ -1,0 +1,63 @@
+.ai-myths {
+  &__grid {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+  }
+
+  &__card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 40px;
+    padding: 45px 40px;
+    background: linear-gradient(
+      135deg,
+      rgba(31, 63, 77, 0.85) 0%,
+      rgba(31, 75, 94, 0.45) 100%
+    );
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    border-radius: 24px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    // Минималистичная анимация - только картинки
+    img {
+      opacity: 0;
+      transform: scale(0.8) translateY(20px);
+      transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    // Класс для активации анимации
+    &--animated {
+      img {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    &:nth-child(3),
+    &:nth-child(4) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__description {
+    line-height: 1.4;
+    font-size: 15px;
+    color: #ffffff;
+    margin: 0;
+    font-weight: 400;
+    font-family: "Arial", sans-serif;
+  }
+
+  img {
+    border-radius: 12px;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+    flex-shrink: 0;
+  }
+}

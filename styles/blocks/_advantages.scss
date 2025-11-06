@@ -2,32 +2,316 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 50px;
+  gap: 60px;
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    gap: 30px;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
   }
 
   &__card {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 24px;
     background: linear-gradient(
-      180deg,
-      rgba(0, 224, 255, 0.11) 0%,
-      rgba(0, 224, 255, 0.0539) 100%
+      135deg,
+      rgba(73, 185, 232, 0.08) 0%,
+      rgba(73, 185, 232, 0.02) 100%
     );
-    border-radius: 20px;
-    border: 2px solid;
+    border-radius: 24px;
+    border: 1px solid rgba(73, 185, 232, 0.15);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
 
-    border-image-source: radial-gradient(
-      47.54% 111.62% at 50% 50%,
-      #49b9e8 0%,
-      rgba(31, 77, 96, 0.43) 100%
-    );
-    padding: 30px;
+    // Изначальное состояние для анимации при скролле
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+
+    // Номер карточки
+    &::before {
+      content: attr(data-number);
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 48px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #49b9e8, #83d4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.15;
+      line-height: 1;
+      z-index: 1;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    // Акцентный угол с анимацией
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #49b9e8, transparent 70%);
+      border-radius: 0 24px 0 0;
+      opacity: 0.3;
+      transition: all 0.4s ease;
+    }
+
+    // Парящие частицы
+    .card-particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(73, 185, 232, 0.6);
+        border-radius: 50%;
+        animation: floatParticle 6s ease-in-out infinite;
+      }
+
+      &::before {
+        top: 20%;
+        left: 15%;
+        animation-delay: 0s;
+      }
+
+      &::after {
+        bottom: 25%;
+        right: 20%;
+        animation-delay: 3s;
+      }
+    }
+
+    // Скользящий hover эффект
+    .card-hover {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(73, 185, 232, 0.1),
+        transparent
+      );
+      transition: left 0.6s ease;
+      z-index: 0;
+    }
+
+    // Иконка с плавной анимацией
+    img {
+      width: 56px;
+      height: 56px;
+      padding: 12px;
+      background: linear-gradient(
+        135deg,
+        rgba(73, 185, 232, 0.12) 0%,
+        rgba(73, 185, 232, 0.06) 100%
+      );
+      border: 1.5px solid rgba(73, 185, 232, 0.25);
+      border-radius: 16px;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      filter: brightness(0) invert(1);
+      position: relative;
+      z-index: 2;
+      animation: iconFloat 6s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    // Описание с анимацией появления текста
+    &-description {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.6s ease 0.3s;
+    }
+
+    // Класс для анимации при скролле
+    &.animate-in {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+
+      .advantages__card-description {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    // Hover эффекты
+    @include hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(73, 185, 232, 0.4);
+      background: linear-gradient(
+        135deg,
+        rgba(73, 185, 232, 0.12) 0%,
+        rgba(73, 185, 232, 0.05) 100%
+      );
+      box-shadow: 0 20px 50px rgba(73, 185, 232, 0.2),
+        0 0 0 1px rgba(73, 185, 232, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+      .card-hover {
+        left: 100%;
+      }
+
+      img {
+        animation: none;
+        transform: scale(1.15) rotate(12deg);
+        background: linear-gradient(
+          135deg,
+          rgba(73, 185, 232, 0.2) 0%,
+          rgba(73, 185, 232, 0.12) 100%
+        );
+        border-color: rgba(73, 185, 232, 0.5);
+        box-shadow: 0 8px 25px rgba(73, 185, 232, 0.3),
+          0 0 20px rgba(73, 185, 232, 0.2);
+      }
+
+      &::before {
+        opacity: 0.3;
+        transform: scale(1.1) translateX(-2px);
+        text-shadow: 0 0 20px rgba(73, 185, 232, 0.5);
+      }
+
+      &::after {
+        opacity: 0.5;
+        width: 70px;
+        height: 70px;
+      }
+
+      .card-particles {
+        &::before,
+        &::after {
+          animation-duration: 3s;
+          background: rgba(73, 185, 232, 0.8);
+        }
+      }
+    }
   }
+
+  // Адаптивность
+  @include tablet {
+    gap: 50px;
+
+    &__card {
+      padding: 28px;
+      gap: 20px;
+
+      &::before {
+        font-size: 42px;
+      }
+    }
+  }
+
+  @include mobile {
+    gap: 40px;
+
+    &__card {
+      padding: 24px;
+      text-align: center;
+      align-items: center;
+      gap: 18px;
+
+      &::before {
+        font-size: 36px;
+        top: 16px;
+        right: 20px;
+      }
+
+      &::after {
+        width: 50px;
+        height: 50px;
+      }
+
+      img {
+        width: 52px;
+        height: 52px;
+      }
+    }
+  }
+}
+
+// Плавные анимации
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-4px) rotate(2deg) scale(1.02);
+  }
+  50% {
+    transform: translateY(-2px) rotate(0deg) scale(1);
+  }
+  75% {
+    transform: translateY(-6px) rotate(-2deg) scale(1.01);
+  }
+}
+
+@keyframes floatParticle {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(10px, -15px) scale(1.2);
+  }
+  50% {
+    transform: translate(-5px, -25px) scale(0.8);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translate(15px, -10px) scale(1.1);
+  }
+}
+
+// Анимация появления при скролле
+@keyframes cardScrollReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.advantages__card.animate-in {
+  animation: cardScrollReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

@@ -1,9 +1,7 @@
 html {
   scrollbar-width: none;
   -ms-overflow-style: none;
-  transform: scale(0.8);
-  transform-origin: top left;
-  width: 125%; /* компенсируем масштаб: 100% / 0.8 = 125% */
+  zoom: 0.75;
 }
 
 html::-webkit-scrollbar {

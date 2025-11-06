@@ -1,0 +1,18 @@
+.block-four {
+  min-width: 100%;
+  min-height: 100vh; /* исправил опечатку 100h → 100vh */
+  background: linear-gradient(
+      286.41deg,
+      rgba(2, 35, 53, 0.8) 3.63%,
+      rgba(12, 55, 61, 0.8) 90.98%
+    ),
+    url("../images/Фон4.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
