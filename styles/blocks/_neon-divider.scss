@@ -19,7 +19,16 @@
     );
     border-image-slice: 1;
     box-shadow: 0px 0px 24px 0px #00e0ff, 0px 4px 15px 0px #4ad9ec,
-      0px 3px 15px 0px #00e0ffed;
+      0px -4px 15px 0px #4ad9ec,
+      // Тень вверх
+      0px 3px 15px 0px #00e0ffed,
+      0px -3px 15px 0px #00e0ffed,
+      // Тень вверх
+      0px 0px 40px 5px rgba(0, 224, 255, 0.3),
+      0px 0px 40px 5px rgba(0, 224, 255, 0.3) inset,
+      // Внутренняя тень
+      0px 0px 60px 10px rgba(74, 217, 236, 0.2),
+      0px 0px 80px 15px rgba(50, 171, 195, 0.1);
     backdrop-filter: blur(2px);
     animation: neonGlow 3s ease-in-out infinite alternate;
   }
@@ -38,11 +47,29 @@
   0% {
     opacity: 0.7;
     box-shadow: 0px 0px 20px 0px #00e0ff, 0px 4px 12px 0px #4ad9ec,
-      0px 3px 12px 0px #00e0ffed;
+      0px -4px 12px 0px #4ad9ec,
+      // Тень вверх
+      0px 3px 12px 0px #00e0ffed,
+      0px -3px 12px 0px #00e0ffed,
+      // Тень вверх
+      0px 0px 35px 3px rgba(0, 224, 255, 0.25),
+      0px 0px 35px 3px rgba(0, 224, 255, 0.25) inset,
+      // Внутренняя тень
+      0px 0px 50px 8px rgba(74, 217, 236, 0.15),
+      0px 0px 70px 12px rgba(50, 171, 195, 0.08);
   }
   100% {
     opacity: 1;
     box-shadow: 0px 0px 30px 0px #00e0ff, 0px 4px 20px 0px #4ad9ec,
-      0px 3px 20px 0px #00e0ffed;
+      0px -4px 20px 0px #4ad9ec,
+      // Тень вверх
+      0px 3px 20px 0px #00e0ffed,
+      0px -3px 20px 0px #00e0ffed,
+      // Тень вверх
+      0px 0px 45px 7px rgba(0, 224, 255, 0.35),
+      0px 0px 45px 7px rgba(0, 224, 255, 0.35) inset,
+      // Внутренняя тень
+      0px 0px 65px 12px rgba(74, 217, 236, 0.25),
+      0px 0px 85px 18px rgba(50, 171, 195, 0.15);
   }
 }

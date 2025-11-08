@@ -543,12 +543,14 @@ h1 {
   justify-content: center;
   width: 100%;
   height: 60px;
-  box-shadow: 0px 7px 20px -7px #00e0ff;
-  border-radius: 9px;
-  background: linear-gradient(180deg, rgba(3, 225, 255, 0.66) 0%, #13cdc2 100%);
+  box-shadow: 0px 7px 20px -7px rgba(0, 224, 255, 0.5), 0px 0px 20px 1px rgba(0, 224, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(3, 225, 255, 0.3) 0%, rgba(19, 205, 194, 0.25) 100%);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 10px;
   color: var(--color-light);
-  border: none;
   letter-spacing: 2px;
   font-family: inherit;
   font-size: 18px;
@@ -556,6 +558,8 @@ h1 {
   text-transform: uppercase;
   transition: all 0.3s ease;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 .button {
   font-size: clamp(10px, 10px + (12 - 10) * (100vw - 320px) / (1400 - 320), 12px);
@@ -563,13 +567,33 @@ h1 {
 @media (hover: hover) {
   .button:hover {
     transform: translateY(-2px);
-    box-shadow: 0px 10px 25px -5px #00e0ff;
+    box-shadow: 0px 10px 25px -5px rgba(0, 224, 255, 0.6), 0px 0px 30px 2px rgba(0, 224, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 }
 @media (hover: none) {
   .button:active {
     transform: translateY(-2px);
-    box-shadow: 0px 10px 25px -5px #00e0ff;
+    box-shadow: 0px 10px 25px -5px rgba(0, 224, 255, 0.6), 0px 0px 30px 2px rgba(0, 224, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+}
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+@media (hover: hover) {
+  .button:hover::before {
+    left: 100%;
+  }
+}
+@media (hover: none) {
+  .button:active::before {
+    left: 100%;
   }
 }
 
@@ -1245,7 +1269,7 @@ h1 {
   border: 2px solid;
   border-image-source: linear-gradient(270deg, rgba(74, 207, 236, 0.21) 0%, #32abc3 53.12%, rgba(74, 197, 236, 0.23) 100%);
   border-image-slice: 1;
-  box-shadow: 0px 0px 24px 0px #00e0ff, 0px 4px 15px 0px #4ad9ec, 0px 3px 15px 0px rgba(0, 224, 255, 0.9294117647);
+  box-shadow: 0px 0px 24px 0px #00e0ff, 0px 4px 15px 0px #4ad9ec, 0px -4px 15px 0px #4ad9ec, 0px 3px 15px 0px rgba(0, 224, 255, 0.9294117647), 0px -3px 15px 0px rgba(0, 224, 255, 0.9294117647), 0px 0px 40px 5px rgba(0, 224, 255, 0.3), 0px 0px 40px 5px rgba(0, 224, 255, 0.3) inset, 0px 0px 60px 10px rgba(74, 217, 236, 0.2), 0px 0px 80px 15px rgba(50, 171, 195, 0.1);
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
   animation: neonGlow 3s ease-in-out infinite alternate;
@@ -1263,11 +1287,11 @@ h1 {
 @keyframes neonGlow {
   0% {
     opacity: 0.7;
-    box-shadow: 0px 0px 20px 0px #00e0ff, 0px 4px 12px 0px #4ad9ec, 0px 3px 12px 0px rgba(0, 224, 255, 0.9294117647);
+    box-shadow: 0px 0px 20px 0px #00e0ff, 0px 4px 12px 0px #4ad9ec, 0px -4px 12px 0px #4ad9ec, 0px 3px 12px 0px rgba(0, 224, 255, 0.9294117647), 0px -3px 12px 0px rgba(0, 224, 255, 0.9294117647), 0px 0px 35px 3px rgba(0, 224, 255, 0.25), 0px 0px 35px 3px rgba(0, 224, 255, 0.25) inset, 0px 0px 50px 8px rgba(74, 217, 236, 0.15), 0px 0px 70px 12px rgba(50, 171, 195, 0.08);
   }
   100% {
     opacity: 1;
-    box-shadow: 0px 0px 30px 0px #00e0ff, 0px 4px 20px 0px #4ad9ec, 0px 3px 20px 0px rgba(0, 224, 255, 0.9294117647);
+    box-shadow: 0px 0px 30px 0px #00e0ff, 0px 4px 20px 0px #4ad9ec, 0px -4px 20px 0px #4ad9ec, 0px 3px 20px 0px rgba(0, 224, 255, 0.9294117647), 0px -3px 20px 0px rgba(0, 224, 255, 0.9294117647), 0px 0px 45px 7px rgba(0, 224, 255, 0.35), 0px 0px 45px 7px rgba(0, 224, 255, 0.35) inset, 0px 0px 65px 12px rgba(74, 217, 236, 0.25), 0px 0px 85px 18px rgba(50, 171, 195, 0.15);
   }
 }
 .block-three {
@@ -1405,4 +1429,92 @@ h1 {
   position: relative;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.course-advantages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.course-advantages__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 20px;
+  padding-block: 60px;
+}
+.course-advantages__card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  -moz-column-gap: 25px;
+       column-gap: 25px;
+  padding: 25px 30px;
+  background: linear-gradient(135deg, rgba(31, 63, 77, 0.8) 0%, rgba(31, 75, 94, 0.4) 100%);
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  border-radius: 16px;
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.course-advantages__card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+@media (hover: hover) {
+  .course-advantages__card:hover {
+    transform: translateX(8px);
+    border-color: rgba(74, 144, 226, 0.5);
+    box-shadow: 0 12px 40px rgba(31, 63, 77, 0.4), 0 0 20px rgba(74, 144, 226, 0.2);
+  }
+  .course-advantages__card:hover::before {
+    left: 100%;
+  }
+  .course-advantages__card:hover img {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+@media (hover: none) {
+  .course-advantages__card:active {
+    transform: translateX(8px);
+    border-color: rgba(74, 144, 226, 0.5);
+    box-shadow: 0 12px 40px rgba(31, 63, 77, 0.4), 0 0 20px rgba(74, 144, 226, 0.2);
+  }
+  .course-advantages__card:active::before {
+    left: 100%;
+  }
+  .course-advantages__card:active img {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+.course-advantages__description {
+  line-height: 1.6;
+  font-size: 16px;
+  color: #f0f8ff;
+  margin: 0;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+}
+.course-advantages img {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  filter: brightness(0) saturate(100%) invert(67%) sepia(90%) saturate(500%) hue-rotate(175deg);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
 }/*# sourceMappingURL=styles.css.map */
