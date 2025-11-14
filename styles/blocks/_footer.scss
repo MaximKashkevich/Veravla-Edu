@@ -1,0 +1,222 @@
+.footer {
+  &__content {
+    @include flex-between;
+    padding: 40px 0;
+
+    @include tablet {
+      flex-direction: column;
+      gap: 30px;
+      padding: 30px 0;
+    }
+
+    @include mobile {
+      gap: 20px;
+      padding: 20px 0;
+    }
+  }
+
+  &__brand {
+    flex-shrink: 0;
+  }
+
+  &__logo {
+    width: 150px;
+    height: auto;
+
+    @include mobile {
+      width: 120px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    align-items: center;
+
+    @include tablet {
+      gap: 20px;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+  }
+
+  &__block-email,
+  &__block-phone {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    transition: opacity 0.3s ease;
+
+    @include mobile {
+      justify-content: center;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+
+  &__phone {
+    color: var(--color-light);
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    @include hover {
+      color: var(--color-blue);
+    }
+  }
+
+  &__email {
+    color: var(--color-blue);
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    @include hover {
+      color: var(--color-light);
+    }
+  }
+
+  &__grid-icons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    column-gap: 30px;
+    cursor: pointer;
+
+    @include tablet {
+      column-gap: 20px;
+    }
+
+    @include mobile {
+      column-gap: 15px;
+    }
+
+    img {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      width: 25px;
+      height: 25px;
+
+      @include mobile {
+        width: 20px;
+        height: 20px;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__partners {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    span {
+      @include fluid-text(10, 12);
+      color: rgba(116, 125, 129, 1);
+      letter-spacing: 12%;
+      line-height: 21px;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+  }
+
+  &__divider {
+    position: relative;
+    text-align: center;
+    margin-block: 130px;
+
+    @include tablet {
+      margin-block: 80px;
+    }
+
+    @include mobile {
+      margin-block: 50px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(0, 224, 255, 0.2);
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    p {
+      position: relative;
+      display: inline-block;
+      background: var(--color-dark);
+      padding: 0 20px;
+      color: var(--color-light);
+      font-size: 14px;
+      margin: 0;
+      z-index: 2;
+
+      @include mobile {
+        font-size: 12px;
+        padding: 0 15px;
+      }
+    }
+  }
+
+  &__end {
+    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 40px;
+
+    @include tablet {
+      justify-content: center;
+      padding-bottom: 30px;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      gap: 10px;
+      padding-bottom: 20px;
+    }
+
+    span {
+      color: var(--color-light);
+      font-size: 14px;
+      font-weight: 500;
+
+      @include mobile {
+        font-size: 12px;
+        text-align: center;
+      }
+    }
+
+    img {
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}

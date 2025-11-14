@@ -1,2 +1,180 @@
 .program {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+
+    .program.visible & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__subtitle {
+    padding-block: 50px;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #fff;
+    text-shadow: 0 0 5px #49b9e8, 0 0 10px #49b9e8, 0 0 15px #49b9e8,
+      0 0 20px #00e0ff;
+    letter-spacing: 0.5px;
+
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
+
+    .program.visible & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__faq-col {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  &__faq-card {
+    width: 100%;
+    background: linear-gradient(286.41deg, #073447 3.63%, #08262b 90.98%);
+    padding: 24px;
+    border-radius: 14px;
+    border: 1px solid rgba(73, 185, 232, 0.2);
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(30px);
+
+    @for $i from 1 through 11 {
+      &:nth-child(#{$i}) {
+        transition: opacity 0.5s ease #{$i * 0.1 + 0.6}s,
+          transform 0.5s ease #{$i * 0.1 + 0.6}s, all 0.3s ease;
+      }
+    }
+
+    .program.visible & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__faq-header {
+    @include flex-between;
+    cursor: pointer;
+  }
+
+  &__faq-title {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+  }
+
+  &__faq-circle {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #49b9e8 0%, #00e0ff 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #000;
+    flex-shrink: 0;
+  }
+
+  &__faq-subtitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #49b9e8;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  &__faq-toggle {
+    @include reset-button;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 224, 255, 0.11) 0%,
+      rgba(0, 224, 255, 0.0539) 100%
+    );
+    border-image-source: radial-gradient(
+      47.54% 111.62% at 50% 50%,
+      #49b9e8 0%,
+      rgba(31, 77, 96, 0.43) 100%
+    );
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+
+    @include hover {
+      background: linear-gradient(
+        180deg,
+        rgba(0, 224, 255, 0.2) 0%,
+        rgba(0, 224, 255, 0.1) 100%
+      );
+    }
+
+    img {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &__faq-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    p {
+      color: #ccc;
+      line-height: 1.6;
+      margin: 0;
+      font-size: 1rem;
+      padding-top: 20px;
+    }
+  }
+
+  &__faq-card.active {
+    .program__faq-content {
+      max-height: 1000px;
+      opacity: 1;
+    }
+
+    .program__faq-toggle img {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__button {
+    margin-top: 40px;
+
+    // Анимация для кнопки
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease 1.8s, transform 0.6s ease 1.8s;
+
+    .program.visible & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
